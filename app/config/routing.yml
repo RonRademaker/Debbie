@@ -1,3 +1,7 @@
+connect_holland_health_check:
+    resource: "@ConnectHollandHealthCheckBundle/Resources/config/routing.xml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
