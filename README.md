@@ -2,7 +2,7 @@
 Web application health checker
 
 # About
-Debbie is named after one of collegues, who came with the idea of a health checker for our applications. Debbie will be a symfony application that checks the health of your application by performing basic checks. Web applications can subscribe to Debbie to add additional checks.
+Debbie is named after one of our collegues, who came with the idea of a health checker for our applications. Debbie will be a symfony application that checks the health of your application by performing basic checks. Web applications can subscribe to Debbie to add additional checks.
 
 # Interfaces
 Debbie will have three interfaces:
