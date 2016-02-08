@@ -32,7 +32,8 @@
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^2.7",
         "phpunit/phpunit": "^4.8",
-        "mockery/mockery": "^0.9.4"
+        "mockery/mockery": "^0.9.4",
+        "connectholland/windmill-test-utilities": "^1.1"
     },
     "scripts": {
         "post-install-cmd": [
@@ -51,6 +52,12 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
+    },
+    "repositories": {
+        "WindmillTestUtilities" : {
+            "type": "vcs",
+            "url": "https://github.com/ConnectHolland/WindmillTestUtilities.git"
+        }
     },
     "config": {
         "platform": {
