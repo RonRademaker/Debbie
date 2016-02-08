@@ -10,9 +10,7 @@ namespace ConnectHolland\HealthCheckBundle\Health\Assertion;
 interface AssertionInterface
 {
     /**
-     * Returns if the terms of the assertion are met
-     *
-     * @return boolean
+     * Checks if the terms of the assertion are met
      */
     public function assert();
 
