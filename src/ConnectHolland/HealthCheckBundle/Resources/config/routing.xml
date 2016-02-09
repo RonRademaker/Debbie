@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="connect_holland_health_check_homepage" path="/">
-        <default key="_controller">ConnectHollandHealthCheckBundle:Default:index</default>
+    <route id="connect_holland_health_check_homepage" path="/_health">
+        <default key="_controller">connectholland_debbie.healthcheck_controller:healthAction</default>
     </route>
 </routes>
