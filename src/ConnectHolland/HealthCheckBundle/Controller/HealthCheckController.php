@@ -37,6 +37,13 @@ class HealthCheckController implements ControllerInterface
      * @var array
      */
     private $suites;
+    
+    /**
+     * Boolean indicating something failed
+     * 
+     * @var bool
+     */
+    private $failed = false;
 
     /**
      * Creates a new HealthCheckController
@@ -63,7 +70,8 @@ class HealthCheckController implements ControllerInterface
             $this->templating->render(
                 'ConnectHollandHealthCheckBundle:health.html.twig',
                 ['result' => $result]
-            )
+            ),
+            ($this->failed ? 500 : 200)  
         );
     }
 
@@ -99,6 +107,8 @@ class HealthCheckController implements ControllerInterface
                     'assertions' => $testResult->getTest()->getAssertions()
                 ];
             }
+            
+            $this->failed = $this->failed || ($testResult->get() === ResultInterface::FAILURE);
         }
 
         return $result;
