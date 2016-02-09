@@ -4,13 +4,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <services>
-        <service id="connect_holland_health_check.example" class="ConnectHolland\HealthCheckBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+   <services>
+        <service id="connectholland_debbie.healthcheck_controller" class="ConnectHolland\HealthCheckBundle\Controller\HealthCheckController">
+             <argument type="service" id="connectholland_debbie.runner"/>
+             <argument type="service" id="templating"/>
         </service>
-    </services>
-    -->
+        <service id="connectholland_debbie.runner" class="ConnectHolland\HealthCheckBundle\Health\Runner\SimpleRunner">
+             <argument type="service" id="connectholland_debbie.loader"/>
+             <argument type="service" id="event_dispatcher"/>
+        </service>
+        <service id="connectholland_debbie.loader" class="ConnectHolland\HealthCheckBundle\Health\Loader\SimpleLoader">
+            <call method='registerSuite'>
+                <argument type="service" id="connectholland_debbie.software_suite"/>
+            </call>
+        </service>
+        <service id="connectholland_debbie.listener" class="ConnectHolland\HealthCheckBundle\Health\Listener\SimpleListener">
+            <argument type="service" id="connectholland_debbie.healthcheck_controller"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="connectholland_debbie.software_suite" class="ConnectHolland\HealthCheckBundle\Health\Suite\ConfigurableSuite">
+            <call method='addTest'>
+                <argument type="service" id="connectholland_debbie.software_suite.php_version"/>
+            </call>
+        </service>
+        <service id="connectholland_debbie.software_suite.php_version" class="ConnectHolland\HealthCheckBundle\Health\Test\PHPVersion">
+            <argument>5.5.0</argument>
+        </service>
+   </services>
 </container>
