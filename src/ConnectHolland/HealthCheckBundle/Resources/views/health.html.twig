@@ -1,1 +1,13 @@
-Hello World!
+<html>
+    <head>
+        <title>Debbie - Web Application Health Checker</title>
+    </head>
+    <body>
+        {% for key,value in result %}
+            <h1>{{ key }} </h1>
+            {% for test in value %}
+                <h2>{{ test.test }} : {{ test.result }}</h2>
+            {% endfor %}
+       {% endfor %}
+    </body>
+</html>
