@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ConnectHolland/Debbie.svg?branch=master)](https://travis-ci.org/ConnectHolland/Debbie)
+
 # Debbie
 Web application health checker
 
