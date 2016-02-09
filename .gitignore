@@ -1,4 +1,5 @@
 /app/config/parameters.yml
+/app/bootstrap.php.cache
 /build/
 /composer.phar
 /vendor/
