@@ -106,9 +106,9 @@ class HealthCheckController implements ControllerInterface
                     'result' => $testResult->get() === ResultInterface::SUCCESS,
                     'assertions' => $testResult->getTest()->getAssertions()
                 ];
+                
+                $this->failed = $this->failed || ($testResult->get() === ResultInterface::FAILURE);
             }
-            
-            $this->failed = $this->failed || ($testResult->get() === ResultInterface::FAILURE);
         }
 
         return $result;
