@@ -47,5 +47,19 @@ class IPPort extends AbstractAssertion {
             $this->fail();
         }
     }
+    
+    /**
+     * Include IP and port in the representation
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return sprintf(
+            '%s - %s:%s',
+            parent::__toString(),
+            $this->ip,
+            $this->port
+        );
+    }
 
 }

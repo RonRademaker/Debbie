@@ -48,6 +48,4 @@ abstract class AvailableService extends AbstractTest {
      * @return integer
      */
     abstract protected function getPort();
-    
-
 }

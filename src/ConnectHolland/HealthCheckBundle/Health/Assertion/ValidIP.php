@@ -35,5 +35,17 @@ class ValidIP extends AbstractAssertion {
             $this->succeed();
         }
     }
-
+    
+    /**
+     * Include IP in the representation
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return sprintf(
+            '%s - %s',
+            parent::__toString(),
+            $this->ip
+        );
+    }
 }
