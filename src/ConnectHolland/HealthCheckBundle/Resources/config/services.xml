@@ -23,6 +23,9 @@
             <tag name="kernel.event_subscriber"/>
         </service>
         <service id="connectholland_debbie.software_suite" class="ConnectHolland\HealthCheckBundle\Health\Suite\ConfigurableSuite">
+            <call method='setName'>
+                <argument>Software Checks</argument>
+            </call>
             <call method='addTest'>
                 <argument type="service" id="connectholland_debbie.software_suite.php_version"/>
             </call>

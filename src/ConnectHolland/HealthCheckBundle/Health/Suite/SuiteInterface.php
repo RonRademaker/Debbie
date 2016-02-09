@@ -12,6 +12,20 @@ use ConnectHolland\HealthCheckBundle\Health\Runner\RunnerInterface;
 interface SuiteInterface
 {
     /**
+     * Sets the name of the suite
+     * 
+     * @param string $name
+     */
+    public function setName($name);
+    
+    /**
+     * Gets the name of the suite
+     * 
+     * @return string 
+     */
+    public function getName();
+    
+    /**
      * Run the test in this suite in $runner
      *
      * @param RunnerInterface $runner

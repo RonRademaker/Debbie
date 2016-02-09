@@ -85,8 +85,7 @@ class HealthCheckController implements ControllerInterface
     {
         $result = [];
         foreach ($this->suites as $suite) {
-            $fqCls = get_class($suite);
-            $suiteName = substr($fqCls, strrpos($fqCls, '\\') + 1);
+            $suiteName = $suite->getName();
             $result[$suiteName] = [];
 
             $testResults = $suite->getResults();

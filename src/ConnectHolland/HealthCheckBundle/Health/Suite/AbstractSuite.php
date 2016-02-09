@@ -17,6 +17,33 @@ abstract class AbstractSuite implements SuiteInterface
      * @var array
      */
     private $results;
+    
+    /**
+     * The suite's name
+     * 
+     * @var string
+     */
+    private $name;
+    
+    /**
+     * Sets the name of the suite
+     * 
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+    
+    /**
+     * Gets the name of the suite
+     * 
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * Run the test in this suite in $runner
