@@ -15,7 +15,7 @@
         </service>
         <service id="connectholland_debbie.loader" class="ConnectHolland\HealthCheckBundle\Health\Loader\SimpleLoader">
             <call method='registerSuite'>
-                <argument type="service" id="connectholland_debbie.software_suite"/>
+                <argument type="service" id="connectholland_debbie.operating_system"/>
             </call>
             <call method='registerSuite'>
                 <argument type="service" id="connectholland_debbie.services_suite"/>
@@ -25,9 +25,9 @@
             <argument type="service" id="connectholland_debbie.healthcheck_controller"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-        <service id="connectholland_debbie.software_suite" class="ConnectHolland\HealthCheckBundle\Health\Suite\ConfigurableSuite">
+        <service id="connectholland_debbie.operating_system" class="ConnectHolland\HealthCheckBundle\Health\Suite\ConfigurableSuite">
             <call method='setName'>
-                <argument>Software Checks</argument>
+                <argument>Operating System</argument>
             </call>
             <call method='addTest'>
                 <argument type="service" id="connectholland_debbie.software_suite.php_version"/>
@@ -38,6 +38,9 @@
                 <argument>Services</argument>
             </call>
             <call method='addTest'>
+                <argument type="service" id="connectholland_debbie.software_suite.apache_localhost"/>
+            </call>
+            <call method='addTest'>
                 <argument type="service" id="connectholland_debbie.software_suite.mongo_localhost"/>
             </call>
             <call method='addTest'>
@@ -45,10 +48,14 @@
             </call>
         </service>
         <service id="connectholland_debbie.software_suite.php_version" class="ConnectHolland\HealthCheckBundle\Health\Test\PHPVersion">
-            <argument>5.5.0</argument>
+            <argument>5.6.0</argument>
+            <argument>5.7.0</argument>
+        </service>
+        <service id="connectholland_debbie.software_suite.apache_localhost" class="ConnectHolland\HealthCheckBundle\Health\Test\HTTPd">
+            <argument>localhost</argument>
         </service>
         <service id="connectholland_debbie.software_suite.mongo_localhost" class="ConnectHolland\HealthCheckBundle\Health\Test\MongoDB">
-            <argument>127.0.0.1</argument>
+            <argument>localhost</argument>
         </service>
         <service id="connectholland_debbie.software_suite.mysql_sql01" class="ConnectHolland\HealthCheckBundle\Health\Test\MySQL">
             <argument>sql01</argument>

@@ -48,6 +48,20 @@ abstract class AbstractComparison extends AbstractAssertion
             $this->fail();
         }
     }
+    
+    /**
+     * Include left and right in the representation
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return sprintf(
+            '%s - %s:%s',
+            parent::__toString(),
+            $this->left,
+            $this->right
+        );
+    }
 
     /**
      * Compare two values
