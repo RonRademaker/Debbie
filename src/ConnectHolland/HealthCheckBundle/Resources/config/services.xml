@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -17,6 +17,9 @@
             <call method='registerSuite'>
                 <argument type="service" id="connectholland_debbie.software_suite"/>
             </call>
+            <call method='registerSuite'>
+                <argument type="service" id="connectholland_debbie.services_suite"/>
+            </call>
         </service>
         <service id="connectholland_debbie.listener" class="ConnectHolland\HealthCheckBundle\Health\Listener\SimpleListener">
             <argument type="service" id="connectholland_debbie.healthcheck_controller"/>
@@ -30,8 +33,25 @@
                 <argument type="service" id="connectholland_debbie.software_suite.php_version"/>
             </call>
         </service>
+        <service id="connectholland_debbie.services_suite" class="ConnectHolland\HealthCheckBundle\Health\Suite\ConfigurableSuite">
+            <call method='setName'>
+                <argument>Services</argument>
+            </call>
+            <call method='addTest'>
+                <argument type="service" id="connectholland_debbie.software_suite.mongo_localhost"/>
+            </call>
+            <call method='addTest'>
+                <argument type="service" id="connectholland_debbie.software_suite.mysql_sql01"/>
+            </call>
+        </service>
         <service id="connectholland_debbie.software_suite.php_version" class="ConnectHolland\HealthCheckBundle\Health\Test\PHPVersion">
             <argument>5.5.0</argument>
+        </service>
+        <service id="connectholland_debbie.software_suite.mongo_localhost" class="ConnectHolland\HealthCheckBundle\Health\Test\MongoDB">
+            <argument>127.0.0.1</argument>
+        </service>
+        <service id="connectholland_debbie.software_suite.mysql_sql01" class="ConnectHolland\HealthCheckBundle\Health\Test\MySQL">
+            <argument>sql01</argument>
         </service>
    </services>
 </container>
