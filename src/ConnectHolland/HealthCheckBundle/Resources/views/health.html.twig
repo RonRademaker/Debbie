@@ -6,7 +6,14 @@
         {% for key,value in result %}
             <h1>{{ key }} </h1>
             {% for test in value %}
-                <h2>{{ test.test }} : {{ test.result }}</h2>
+                <h2>{{ test.test }} : 
+                    {% if test.result %} pass {% else %} fail {% endif %}
+                </h2>
+                <ul>
+                    {% for assertion in test.assertions %}
+                        <li>{{ assertion }}</li>
+                    {% endfor %}            
+                </ul>
             {% endfor %}
        {% endfor %}
     </body>

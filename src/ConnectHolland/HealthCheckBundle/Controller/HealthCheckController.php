@@ -5,6 +5,7 @@ namespace ConnectHolland\HealthCheckBundle\Controller;
 use ConnectHolland\HealthCheckBundle\Health\Controller\ControllerInterface;
 use ConnectHolland\HealthCheckBundle\Health\Runner\RunnerInterface;
 use ConnectHolland\HealthCheckBundle\Health\Suite\SuiteInterface;
+use ConnectHolland\HealthCheckBundle\Health\Test\ResultInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -92,7 +93,11 @@ class HealthCheckController implements ControllerInterface
             foreach ($testResults as $testResult) {
                 $testCls = get_class($testResult->getTest());
                 $testName = substr($testCls, strrpos($testCls, '\\') + 1);
-                $result[$suiteName][] = ['test' => $testName, 'result' => $testResult->get()];
+                $result[$suiteName][] = [
+                    'test' => $testName,
+                    'result' => $testResult->get() === ResultInterface::SUCCESS,
+                    'assertions' => $testResult->getTest()->getAssertions()
+                ];
             }
         }
 

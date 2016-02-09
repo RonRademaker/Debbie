@@ -51,4 +51,23 @@ abstract class AbstractAssertion implements AssertionInterface
     {
         return isset($this->result);
     }
+    
+    /**
+     * Gets a string representation of this assertion
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        $assertionClass = get_class($this);
+        $assertionName = substr($assertionClass, strrpos($assertionClass, '\\') + 1);
+        $result = $this->isExecuted() ? ($this->isFailed() ? 'failed' : 'passed') : 'null';
+        
+        return sprintf(
+            '%s:%s:%s',
+            $assertionName,
+            ($this->isExecuted() ? 'executed' : 'not executed'),
+            $result
+        );
+    }
 }

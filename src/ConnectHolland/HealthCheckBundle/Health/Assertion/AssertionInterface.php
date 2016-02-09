@@ -27,4 +27,11 @@ interface AssertionInterface
      * @return boolean
      */
     public function isExecuted();
+    
+    /**
+     * Gets a string representation of this assertion
+     * 
+     * @return string
+     */
+    public function __toString();
 }
