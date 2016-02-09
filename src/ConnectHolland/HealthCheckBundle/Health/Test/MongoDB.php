@@ -12,6 +12,6 @@ class MongoDB extends AvailableService {
      * Returns the default mongo port
      */
     protected function getPort() {
-        return 27001;
+        return 27017;
     }
 }
