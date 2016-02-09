@@ -17,13 +17,26 @@ abstract class AbstractTest implements TestInterface
      * @var array
      */
     private $assertions = [];
+    
+    /**
+     * Boolean indicating the test failed
+     * 
+     * @var bool
+     */
+    private $failed = false;
 
     /**
-     * Assert $assertion
+     * Assert $assertion if not failed
      */
     public function assert(AssertionInterface $assertion)
     {
-        $assertion->assert();
+        if ($this->failed === false) {
+            $assertion->assert();
+        
+            if ($assertion->isFailed()) {
+                $this->failed = true;
+            }
+        }
 
         $this->assertions[] = $assertion;
     }
