@@ -11,6 +11,7 @@ use ConnectHolland\HealthCheckBundle\Health\Test\Result;
 use ConnectHolland\HealthCheckBundle\Health\Test\ResultInterface;
 use ConnectHolland\HealthCheckBundle\Health\Test\TestInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 
 /**
@@ -40,7 +41,7 @@ class SimpleRunner implements RunnerInterface
      * @param LoaderInterface $loader
      * @param EventDispatcher $eventDispatcher
      */
-    public function __construct(LoaderInterface $loader, EventDispatcher $eventDispatcher)
+    public function __construct(LoaderInterface $loader, EventDispatcherInterface $eventDispatcher)
     {
         $this->loader = $loader;
         $this->eventDispatcher = $eventDispatcher;

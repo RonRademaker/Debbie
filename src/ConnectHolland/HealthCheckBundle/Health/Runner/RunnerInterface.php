@@ -5,6 +5,7 @@ namespace ConnectHolland\HealthCheckBundle\Health\Runner;
 use ConnectHolland\HealthCheckBundle\Health\Loader\LoaderInterface;
 use ConnectHolland\HealthCheckBundle\Health\Test\TestInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 
 /**
@@ -21,7 +22,7 @@ interface RunnerInterface
      * @param EventDispatcher $eventDispatcher
      */
 
-    public function __construct(LoaderInterface $loader, EventDispatcher $eventDispatcher);
+    public function __construct(LoaderInterface $loader, EventDispatcherInterface $eventDispatcher);
 
     /**
      * Run all tests
