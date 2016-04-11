@@ -58,7 +58,10 @@
             <argument>localhost</argument>
         </service>
         <service id="connectholland_debbie.software_suite.mysql_sql01" class="ConnectHolland\HealthCheckBundle\Health\Test\MySQL">
-            <argument>sql01</argument>
+            <argument>%debbie_mysql_host%</argument>
+            <argument>%debbie_mysql_dsn%</argument>
+            <argument>%debbie_mysql_user%</argument>
+            <argument>%debbie_mysql_pass%</argument>
         </service>
    </services>
 </container>
